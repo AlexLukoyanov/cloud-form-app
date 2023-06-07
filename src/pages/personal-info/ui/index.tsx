@@ -1,12 +1,19 @@
 import { useNavigate } from "react-router-dom";
+import { styled } from "styled-components";
 
 export const PersonalInfoPage = () => {
   const navigate = useNavigate();
   return (
-    <div>
+    <PageContainer>
       {" "}
       <h1>Personal Info Page</h1>
       <button onClick={() => navigate("/user-form")}>Next</button>
-    </div>
+    </PageContainer>
   );
 };
+
+const PageContainer = styled.div`
+  width: 100%;
+  margin: 0 auto;
+  max-width: 900px;
+`;
