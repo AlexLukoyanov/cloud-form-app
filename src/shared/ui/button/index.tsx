@@ -41,7 +41,7 @@ const StyledButton = styled.button<ButtonProps>`
     p.variant === "primary" &&
     css`
       color: #ffffff;
-      background-color: ${(p) => p.theme.colors.blue};
+      background-color: ${(p) => p.theme.colors.purple};
 
       &:hover:not(:disabled),
       &:focus:not(:disabled) {
@@ -57,9 +57,9 @@ const StyledButton = styled.button<ButtonProps>`
   ${(p) =>
     p.variant === "secondary" &&
     css`
-      color: ${(p) => p.theme.colors.blue};
+      color: ${(p) => p.theme.colors.purple};
       background-color: ${(p) => p.theme.colors.white};
-      border: 1.5px solid ${(p) => p.theme.colors.blue};
+      border: 1.5px solid ${(p) => p.theme.colors.purple};
 
       &:hover:not(:disabled),
       &:focus:not(:disabled) {
@@ -76,7 +76,7 @@ const StyledButton = styled.button<ButtonProps>`
     p.variant === "square-icon" &&
     css`
       background-color: ${(p) => p.theme.colors.white};
-      border: 1.5px solid ${(p) => p.theme.colors.blue};
+      border: 1.5px solid ${(p) => p.theme.colors.purple};
       padding: 15px;
       width: 44px;
       height: 44px;
@@ -95,7 +95,7 @@ const StyledButton = styled.button<ButtonProps>`
  ${(p) =>
     p.variant === "link-with-icon" &&
     css`
-      color: ${(p) => p.theme.colors.blue};
+      color: ${(p) => p.theme.colors.purple};
       background-color: transparent;
       border: none;
       padding: 0;

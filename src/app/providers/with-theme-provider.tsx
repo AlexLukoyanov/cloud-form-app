@@ -4,14 +4,20 @@ import { ThemeProvider } from "styled-components";
 const theme = {
   colors: {
     body: "#F4F4F5",
-    text: "#333333",
     white: "#FFFFFF",
-    bgGrey: "rgba(0, 0, 0, 0.04)",
-    borderGrey: "rgba(0, 0, 0, 0.24)",
-    borderGreyLight: "rgba(0, 0, 0, 0.016)",
-    blue: "#5558FA",
-    grey: "#A6A6A6",
-    greyLight: "rgba(0, 0, 0, 0.08)",
+    purple: "#5558FA",
+    red: "#E84E58",
+    text: {
+      primaryG800: "#333333",
+      secondaryG600: "#666666",
+      tertiaryG350: "#A6A6A6",
+    },
+    alpha: {
+      "4": "rgba(0, 0, 0, 0.04)",
+      "8": "rgba(0, 0, 0, 0.08)",
+      "16": "rgba(0, 0, 0, 0.16)",
+      "48": "rgba(0, 0, 0, 0.48)",
+    },
   },
   media: {
     sm: 575,

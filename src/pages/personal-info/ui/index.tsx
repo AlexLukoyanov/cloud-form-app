@@ -1,5 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import { styled } from "styled-components";
+import { Input } from "shared/ui/input";
 
 export const PersonalInfoPage = () => {
   const navigate = useNavigate();

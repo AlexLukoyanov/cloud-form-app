@@ -32,7 +32,7 @@ export const GlobalStyles = createGlobalStyle`
   body {
     margin: 0;
     background: ${({ theme }: any) => theme.colors.bgGrey};
-    color: ${({ theme }: any) => theme.colors.text};
+    color: ${({ theme }: any) => theme.colors.text.PrimaryG800};
     font-size: 14px;
     font-family: 'SB Regular', sans-serif;
     -webkit-font-smoothing: antialiased;
