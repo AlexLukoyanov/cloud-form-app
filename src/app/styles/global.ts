@@ -9,14 +9,23 @@ export const GlobalStyles = createGlobalStyle`
     box-sizing: border-box;
   }
   
+
+@font-face {
+    font-family: 'SB Regular';
+  src: url('/fonts/SB-Sans-Interface-Regular.otf');
+  }
+
   @font-face {
-  font-family: 'SB Sans Interface';
-  src: url('/fonts/B-Sans-Text.woff2') format('woff2'),
-       url('/fonts/B-Sans-Medium.woff2') format('woff2'),
-       url('/fonts/B-Sans-Bold.woff2') format('woff2');
-  font-weight: normal;
-  font-style: normal;
-}
+    font-family: 'SB Medium';
+  src: url('/fonts/SB-Sans-Interface-Medium.otf');
+  font-weight: 500;
+  }
+
+  @font-face {
+    font-family: 'SB Bold';
+  src: url('/fonts/SB-Sans-Interface-Bold.otf');
+  font-weight: bold;
+  }
 
 
   
@@ -24,8 +33,8 @@ export const GlobalStyles = createGlobalStyle`
     margin: 0;
     background: ${({ theme }: any) => theme.colors.bgGrey};
     color: ${({ theme }: any) => theme.colors.text};
-    font-size: 1.15em;
-    font-family: 'SB Sans Interface', sans-serif;
+    font-size: 14px;
+    font-family: 'SB Regular', sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
