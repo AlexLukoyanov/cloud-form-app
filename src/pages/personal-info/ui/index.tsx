@@ -1,6 +1,5 @@
 import { useNavigate } from "react-router-dom";
 import { styled } from "styled-components";
-import { Input } from "shared/ui/input";
 
 export const PersonalInfoPage = () => {
   const navigate = useNavigate();
@@ -8,7 +7,12 @@ export const PersonalInfoPage = () => {
     <PageContainer>
       {" "}
       <h1>Personal Info Page</h1>
-      <button onClick={() => navigate("/user-form")}>Next</button>
+      <button
+        style={{ marginBottom: "10px" }}
+        onClick={() => navigate("/user-form")}
+      >
+        Next
+      </button>
     </PageContainer>
   );
 };
