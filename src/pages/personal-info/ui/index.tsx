@@ -1,10 +1,10 @@
-import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { styled } from "styled-components";
+import { Input } from "shared/ui/input";
 
 export const PersonalInfoPage = () => {
   const navigate = useNavigate();
-  const [value, setValue] = useState("");
+
   return (
     <PageContainer>
       {" "}
@@ -15,6 +15,7 @@ export const PersonalInfoPage = () => {
       >
         Next
       </button>
+      <Input label="Email" type="text" placeholder="Email" />
     </PageContainer>
   );
 };

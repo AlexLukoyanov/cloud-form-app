@@ -5,14 +5,15 @@ type InputProps = InputHTMLAttributes<HTMLInputElement> &
   LabelHTMLAttributes<HTMLLabelElement> & {
     label?: string;
     error?: string;
+    value?: string;
   };
 
-export const Input = ({ label, error, ...props }: InputProps) => {
+export const Input = ({ label, error, value, ...props }: InputProps) => {
   return (
     <Container>
       <Label>
-        Text
-        <InputField {...props} />
+        {label}
+        <InputField value={value} {...props} />
       </Label>
       {error ? <Error>{error}</Error> : null}
     </Container>
@@ -27,25 +28,28 @@ const Label = styled.label`
   display: flex;
   flex-direction: column;
 `;
-const InputField = styled.input<InputProps>`
-  border: 1px solid ${(props) => props.theme.colors.alpha[16]};
+const InputField = styled.input<Pick<InputProps, "value">>`
+  border: 1px solid ${(p) => p.theme.colors.alpha[16]};
   border-radius: 4px;
   margin-top: 8px;
   margin-bottom: 8px;
   padding: 12px;
+  color: ${(p) => p.theme.colors.alpha[48]};
+  background-color: ${(p) =>
+    p.value?.length ? p.theme.colors.alpha[4] : p.theme.colors.white};
 
   &:focus {
-    border-color: ${(props) => props.theme.colors.purple};
+    border-color: ${(p) => p.theme.colors.purple};
   }
 
   &::placeholder {
-    color: ${(props) => props.theme.colors.alpha[48]};
+    color: ${(p) => p.theme.colors.alpha[48]};
   }
 
   &:disabled {
-    background-color: ${(props) => props.theme.colors.alpha[4]};
+    opacity: 0.3;
   }
 `;
 const Error = styled.p`
-  color: ${(props) => props.theme.colors.red};
+  color: ${(p) => p.theme.colors.red};
 `;
