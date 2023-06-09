@@ -1,8 +1,10 @@
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { styled } from "styled-components";
 
 export const PersonalInfoPage = () => {
   const navigate = useNavigate();
+  const [value, setValue] = useState("");
   return (
     <PageContainer>
       {" "}
