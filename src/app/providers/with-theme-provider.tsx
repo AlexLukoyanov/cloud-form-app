@@ -7,6 +7,7 @@ const theme = {
     white: "#FFFFFF",
     purple: "#5558FA",
     red: "#E84E58",
+    blueLight: "#D5E4F7",
     text: {
       primaryG800: "#333333",
       secondaryG600: "#666666",
