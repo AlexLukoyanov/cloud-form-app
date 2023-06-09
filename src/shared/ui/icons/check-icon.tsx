@@ -7,7 +7,7 @@ type CheckIconProps = {
 export const CheckIcon = ({
   width = 10,
   height = 9,
-  color = "#fffff",
+  color = "#ffffff",
 }: CheckIconProps) => {
   return (
     <svg
