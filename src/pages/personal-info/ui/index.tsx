@@ -1,19 +1,10 @@
-import { useNavigate } from "react-router-dom";
 import { styled } from "styled-components";
+import { PersonalInfoForm } from "widgets/personal-info-form";
 
 export const PersonalInfoPage = () => {
-  const navigate = useNavigate();
-
   return (
     <PageContainer>
-      {" "}
-      <h1>Personal Info Page</h1>
-      <button
-        style={{ marginBottom: "10px" }}
-        onClick={() => navigate("/user-form")}
-      >
-        Next
-      </button>
+      <PersonalInfoForm />
     </PageContainer>
   );
 };

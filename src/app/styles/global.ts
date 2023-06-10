@@ -7,6 +7,12 @@ export const GlobalStyles = createGlobalStyle`
   ${normalize}
   * {
     box-sizing: border-box;
+
+    &:focus-visible {
+    outline: 2px solid ${(p) => p.theme.colors.purple};
+    border-radius: 4px;
+
+  }
   }
   
 
@@ -31,12 +37,16 @@ export const GlobalStyles = createGlobalStyle`
   
   body {
     margin: 0;
-    background: ${({ theme }: any) => theme.colors.bgGrey};
+    padding: 24px 0px 24px 0px;
+    background: ${({ theme }: any) => theme.colors.body};
     color: ${({ theme }: any) => theme.colors.text.PrimaryG800};
     font-size: 14px;
     font-family: 'SB Regular', sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+
+
+ 
   }
 
   button{
