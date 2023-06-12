@@ -11,6 +11,6 @@ export const PersonalInfoPage = () => {
 
 const PageContainer = styled.div`
   width: 100%;
-  margin: 0 auto;
+  margin: 20px auto;
   max-width: 900px;
 `;

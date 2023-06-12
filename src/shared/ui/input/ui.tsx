@@ -4,7 +4,6 @@ import {
   LabelHTMLAttributes,
   Ref,
   forwardRef,
-  useRef,
 } from "react";
 
 import { styled } from "styled-components";
@@ -59,6 +58,7 @@ const Label = styled.label`
   flex-direction: column;
 `;
 const InputField = styled.input<Pick<InputProps, "error">>`
+  outline: none;
   border: 1px solid
     ${(p) => (p.error ? p.theme.colors.red : p.theme.colors.alpha[16])};
   border-radius: 4px;

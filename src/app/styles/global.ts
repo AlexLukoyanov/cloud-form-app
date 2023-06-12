@@ -37,7 +37,7 @@ export const GlobalStyles = createGlobalStyle`
   
   body {
     margin: 0;
-    padding: 24px 0px 24px 0px;
+    padding: 0;
     background: ${({ theme }: any) => theme.colors.body};
     color: ${({ theme }: any) => theme.colors.text.PrimaryG800};
     font-size: 14px;
@@ -58,7 +58,7 @@ export const GlobalStyles = createGlobalStyle`
   #root,
   .app {
     position: relative;
-    height: 100%;
+    min-height: 100%;
   }
   html {
     scroll-behavior: smooth;
