@@ -91,7 +91,7 @@ const StyledButton = styled.button<ButtonProps>`
     css`
       background-color: ${(p) => p.theme.colors.white};
       border: 1.5px solid ${(p) => p.theme.colors.purple};
-      padding: 15px;
+      padding: 12px;
       width: 44px;
       height: 44px;
 

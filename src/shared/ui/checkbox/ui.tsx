@@ -1,20 +1,27 @@
-import { InputHTMLAttributes, LabelHTMLAttributes } from "react";
+import {
+  InputHTMLAttributes,
+  LabelHTMLAttributes,
+  Ref,
+  forwardRef,
+} from "react";
 import { styled } from "styled-components";
 
 type CheckBoxProps = InputHTMLAttributes<HTMLInputElement> &
   LabelHTMLAttributes<HTMLLabelElement> & {
     label?: string;
-    id?: string | number;
+    id?: string;
   };
 
-export const CheckBox = ({ label, id, ...props }: CheckBoxProps) => {
-  return (
-    <Container>
-      <input type="checkbox" id={id} {...props} />
-      <label htmlFor={id}>{label}</label>
-    </Container>
-  );
-};
+export const CheckBox = forwardRef(
+  ({ label, id, ...props }: CheckBoxProps, ref: Ref<HTMLInputElement>) => {
+    return (
+      <Container>
+        <input type="checkbox" id={id} ref={ref} {...props} />
+        <label htmlFor={id}>{label}</label>
+      </Container>
+    );
+  }
+);
 
 const Container = styled.div`
   display: flex;

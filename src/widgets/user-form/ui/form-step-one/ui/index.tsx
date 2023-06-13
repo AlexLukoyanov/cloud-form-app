@@ -20,17 +20,17 @@ export const FormStepOne = () => {
     register,
     handleSubmit,
     control,
+    getValues,
     formState: { errors, isValid },
   } = useForm({
     defaultValues: { nickname, name, surname, sex },
     resolver: yupResolver(formStepOneSchema),
   });
 
-  const onClickBack = (data: UserFormDataOneType) => {
-    if (isValid) {
-      navigate(-1);
-      dispatch(UserFormActions.setUpdateFormDataOne(data));
-    }
+  const onClickBack = () => {
+    const currentData = getValues();
+    dispatch(UserFormActions.setUpdateFormDataOne(currentData));
+    navigate("/");
   };
 
   const onSubmit = (data: UserFormDataOneType) => {
@@ -41,48 +41,51 @@ export const FormStepOne = () => {
   };
 
   return (
-    <Form onSubmit={handleSubmit(onSubmit)}>
-      <InputWrapper>
-        <NameField
-          name="nickname"
-          label="Nickname"
-          register={register}
-          errors={errors.nickname?.message}
-        />
-      </InputWrapper>
-      <InputWrapper>
-        <NameField
-          name="name"
-          label="Name"
-          register={register}
-          errors={errors.name?.message}
-        />
-      </InputWrapper>
-      <InputWrapper>
-        <NameField
-          name="surname"
-          label="Surname"
-          register={register}
-          errors={errors.surname?.message}
-        />
-      </InputWrapper>
-      <InputWrapper>
-        <SexSelect control={control} errors={errors.sex?.message} />
-      </InputWrapper>
-      <ButtonContainer>
-        <Button
-          type="submit"
-          variant="secondary"
-          onClick={handleSubmit(onClickBack)}
-        >
-          {" "}
-          Назад
-        </Button>
-        <Button type="submit" variant="primary">
-          Далее
-        </Button>
-      </ButtonContainer>
-    </Form>
+    <>
+      <Form>
+        <InputWrapper>
+          <NameField
+            name="nickname"
+            label="Nickname"
+            register={register}
+            errors={errors.nickname?.message}
+          />
+        </InputWrapper>
+        <InputWrapper>
+          <NameField
+            name="name"
+            label="Name"
+            register={register}
+            errors={errors.name?.message}
+          />
+        </InputWrapper>
+        <InputWrapper>
+          <NameField
+            name="surname"
+            label="Surname"
+            register={register}
+            errors={errors.surname?.message}
+          />
+        </InputWrapper>
+        <InputWrapper>
+          <SexSelect control={control} errors={errors.sex?.message} />
+        </InputWrapper>
+        <ButtonContainer>
+          <Button type="button" variant="secondary" onClick={onClickBack}>
+            {" "}
+            Назад
+          </Button>
+          <Button
+            type="submit"
+            variant="primary"
+            onClick={handleSubmit(onSubmit)}
+          >
+            {" "}
+            Далее
+          </Button>
+        </ButtonContainer>
+      </Form>
+    </>
   );
 };
 

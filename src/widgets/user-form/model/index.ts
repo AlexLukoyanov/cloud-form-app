@@ -26,9 +26,9 @@ const formDataOne = {
 };
 
 const formDataTwo = {
-  advantages: [""],
+  advantages: [],
   radio: 1,
-  checkbox: [1],
+  checkbox: [],
 };
 
 const formDataThree = {
@@ -39,7 +39,7 @@ const initialState: UserFormState = {
   formDataOne: formDataOne,
   formDataTwo: formDataTwo,
   formDataThree: formDataThree,
-  formStep: 1,
+  formStep: 2,
 };
 
 const UserFormSlice = createSlice({
@@ -60,6 +60,18 @@ const UserFormSlice = createSlice({
     },
     setFormStep(state, action: PayloadAction<number>) {
       state.formStep = action.payload;
+    },
+    setAddAdvantage: (state) => {
+      state.formDataTwo.advantages.push("");
+    },
+    setDeleteAdvantage: (state, action: PayloadAction<number>) => {
+      state.formDataTwo.advantages.splice(action.payload, 1);
+    },
+    setChangeAdvantage: (
+      state,
+      action: PayloadAction<{ index: number; value: string }>
+    ) => {
+      state.formDataTwo.advantages[action.payload.index] = action.payload.value;
     },
   },
 });

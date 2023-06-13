@@ -1,4 +1,9 @@
-import { InputHTMLAttributes, LabelHTMLAttributes } from "react";
+import {
+  InputHTMLAttributes,
+  LabelHTMLAttributes,
+  Ref,
+  forwardRef,
+} from "react";
 import { styled } from "styled-components";
 
 type RadioButtonProps = InputHTMLAttributes<HTMLInputElement> &
@@ -7,14 +12,16 @@ type RadioButtonProps = InputHTMLAttributes<HTMLInputElement> &
     id?: string | number;
   };
 
-export const RadioButton = ({ label, id, ...props }: RadioButtonProps) => {
-  return (
-    <Container>
-      <input type="radio" id={id} {...props} />
-      <label htmlFor={id}>{label}</label>
-    </Container>
-  );
-};
+export const RadioButton = forwardRef(
+  ({ label, id, ...props }: RadioButtonProps, ref: Ref<HTMLInputElement>) => {
+    return (
+      <Container>
+        <input type="radio" id={id} ref={ref} {...props} />
+        <label htmlFor={id}>{label}</label>
+      </Container>
+    );
+  }
+);
 
 const Container = styled.div`
   display: flex;
