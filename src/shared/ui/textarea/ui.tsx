@@ -1,4 +1,4 @@
-import { HTMLAttributes } from "react";
+import { HTMLAttributes, Ref, forwardRef } from "react";
 import styled from "styled-components";
 
 type TextAreaProps = HTMLAttributes<HTMLTextAreaElement> & {
@@ -6,27 +6,30 @@ type TextAreaProps = HTMLAttributes<HTMLTextAreaElement> & {
   label?: string;
   counter?: boolean;
   value?: string;
+  errors?: string;
 };
 
-export const Textarea = ({
-  maxLength = 200,
-  label,
-  value,
-  counter,
-  ...props
-}: TextAreaProps) => {
-  return (
-    <Container>
-      <Label>{label}</Label>
-      <StyledTextArea maxLength={maxLength} value={value} {...props} />
-      {maxLength && counter && (
-        <CharacterCount>
-          {value?.replace(/\s+/g, "").length}/{maxLength}
-        </CharacterCount>
-      )}
-    </Container>
-  );
-};
+export const Textarea = forwardRef(
+  (
+    { maxLength = 200, label, value, counter, errors, ...props }: TextAreaProps,
+    ref: Ref<HTMLTextAreaElement>
+  ) => {
+    return (
+      <Container>
+        <Label>{label}</Label>
+        <StyledTextArea rows={4} maxLength={maxLength} ref={ref} {...props} />
+        <Wrapper>
+          <Error>{errors}</Error>
+          {maxLength && counter && (
+            <CharacterCount>
+              {value?.replace(/\s+/g, "").length}/{maxLength}
+            </CharacterCount>
+          )}
+        </Wrapper>
+      </Container>
+    );
+  }
+);
 
 const Container = styled.div`
   display: flex;
@@ -61,4 +64,15 @@ const CharacterCount = styled.div`
   justify-content: flex-end;
   color: ${(p) => p.theme.colors.alpha[48]};
   font-size: 12px;
+  margin-left: 10px;
+`;
+
+const Wrapper = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+`;
+
+const Error = styled.p`
+  color: ${(p) => p.theme.colors.red};
 `;

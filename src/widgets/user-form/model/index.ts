@@ -39,7 +39,7 @@ const initialState: UserFormState = {
   formDataOne: formDataOne,
   formDataTwo: formDataTwo,
   formDataThree: formDataThree,
-  formStep: 2,
+  formStep: 3,
 };
 
 const UserFormSlice = createSlice({

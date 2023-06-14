@@ -1,6 +1,5 @@
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useFieldArray, useForm } from "react-hook-form";
-import { useNavigate } from "react-router-dom";
 import { styled } from "styled-components";
 import { UserFormActions, UserFormDataTwoType } from "widgets/user-form/";
 import { AddAdvantage } from "features/add-advantage";
