@@ -1,4 +1,5 @@
 import { yupResolver } from "@hookform/resolvers/yup";
+import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { styled } from "styled-components";
 import {
@@ -7,6 +8,8 @@ import {
   postUserForm,
 } from "widgets/user-form/";
 import { About } from "entities/about";
+import { FormRejectedMessage } from "entities/form-rejected-message";
+import { FormSuccessMessage } from "entities/form-success-message";
 import { useAppDispatch, useAppSelector } from "shared/lib/hooks";
 import { Button } from "shared/ui/button";
 import { formStepThreeSchema } from "../lib";
@@ -17,6 +20,7 @@ export const FormStepThree = () => {
   const { about } = useAppSelector((state) => state.userForm.formDataThree);
   const { status } = useAppSelector((state) => state.userForm);
   const dispatch = useAppDispatch();
+  const [isOpenModal, setIsOpenModal] = useState(false);
 
   const {
     register,
@@ -46,31 +50,48 @@ export const FormStepThree = () => {
     };
     if (isValid) {
       await dispatch(postUserForm(validData));
-      dispatch(UserFormActions.setResetFormData());
+      if (status === "rejected") {
+        setIsOpenModal(true);
+      }
     }
   };
+
+  const onCloseModal = () => {
+    setIsOpenModal(false);
+  };
+
+  const onResetFormData = () => {
+    dispatch(UserFormActions.setResetFormData());
+  };
+
   return (
-    <Form onSubmit={handleSubmit(onSubmit)}>
-      <About
-        register={register}
-        errors={errors.about?.message}
-        value={fieldValue}
-      />
-      <ButtonContainer>
-        <Button type="button" variant="secondary" onClick={onClickBack}>
-          {" "}
-          Назад
-        </Button>
-        <Button
-          type="submit"
-          variant="primary"
-          onClick={handleSubmit(onSubmit)}
-        >
-          {" "}
-          Далее
-        </Button>
-      </ButtonContainer>
-    </Form>
+    <>
+      <Form onSubmit={handleSubmit(onSubmit)}>
+        <About
+          register={register}
+          errors={errors.about?.message}
+          value={fieldValue}
+        />
+        <ButtonContainer>
+          <Button type="button" variant="secondary" onClick={onClickBack}>
+            {" "}
+            Назад
+          </Button>
+          <Button
+            type="submit"
+            variant="primary"
+            onClick={handleSubmit(onSubmit)}
+          >
+            {" "}
+            Далее
+          </Button>
+        </ButtonContainer>
+      </Form>
+      {status === "fulfilled" ? (
+        <FormSuccessMessage onReset={onResetFormData} />
+      ) : null}
+      {isOpenModal ? <FormRejectedMessage onClose={onCloseModal} /> : null}
+    </>
   );
 };
 

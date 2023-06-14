@@ -68,6 +68,7 @@ const UserFormSlice = createSlice({
       state.formDataTwo = formDataTwo;
       state.formDataThree = formDataThree;
       state.formStep = 1;
+      state.status = "idle";
     },
   },
   extraReducers: (builder) => {

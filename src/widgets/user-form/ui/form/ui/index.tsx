@@ -7,7 +7,6 @@ import { FormStepThree } from "../../form-step-three";
 import { FormStepTwo } from "../../form-step-two";
 
 export const UserForm = () => {
-  const navigate = useNavigate();
   const formStep = useAppSelector((state) => state.userForm.formStep);
 
   const activeViewFormHandler = (step: number) => {

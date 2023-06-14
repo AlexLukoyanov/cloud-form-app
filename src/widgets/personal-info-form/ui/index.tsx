@@ -10,7 +10,7 @@ import { ResumeLink } from "entities/resume-link";
 import { TelegramLink } from "entities/telegram-link";
 import { useAppDispatch, useAppSelector } from "shared/lib/hooks";
 import { Avatar } from "shared/ui/avatar";
-import { Button } from "shared/ui/button";
+import { Button } from "shared/ui/button/";
 import { validationSchema } from "../lib";
 import { PersonalInfoFormActions, PersonalInfoType } from "../model";
 

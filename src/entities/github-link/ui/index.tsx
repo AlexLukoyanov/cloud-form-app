@@ -1,4 +1,4 @@
-import { Button } from "shared/ui/button";
+import { Button } from "shared/ui/button/";
 import { FolderIcon } from "shared/ui/icons";
 
 export const GitHubLink = () => {
