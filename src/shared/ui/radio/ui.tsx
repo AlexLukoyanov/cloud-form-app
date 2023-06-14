@@ -24,12 +24,11 @@ export const RadioButton = forwardRef(
 );
 
 const Container = styled.div`
-  position: relative;
-
   label {
     cursor: pointer;
     display: flex;
     align-items: center;
+    position: relative;
   }
 
   input {
@@ -58,8 +57,8 @@ const Container = styled.div`
     & + label::after {
       position: absolute;
       content: "";
-      width: 9px;
-      height: 9px;
+      width: 8px;
+      height: 8px;
       border-radius: 50%;
       left: 5px;
       background-color: ${(p) => p.theme.colors.white};
