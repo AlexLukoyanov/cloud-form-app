@@ -38,8 +38,8 @@ export const GlobalStyles = createGlobalStyle`
   body {
     margin: 0;
     padding: 0;
-    background: ${({ theme }: any) => theme.colors.body};
-    color: ${({ theme }: any) => theme.colors.text.PrimaryG800};
+    background: ${({ theme }) => theme.colors.body};
+    color: ${({ theme }) => theme.colors.text.PrimaryG800};
     font-size: 14px;
     font-family: 'SB Regular', sans-serif;
     -webkit-font-smoothing: antialiased;

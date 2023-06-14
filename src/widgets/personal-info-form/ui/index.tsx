@@ -42,7 +42,11 @@ export const PersonalInfoForm = () => {
   return (
     <PageContainer onSubmit={handleSubmit(onSubmit)}>
       <HeaderForm>
-        <Avatar name="Алекей" surname="Лукоянов" />
+        <Avatar
+          name="Алекей"
+          surname="Лукоянов"
+          src="https://img.hhcdn.ru/photo/697990744.jpeg?t=1686837690&h=j0g5c-z5IucTZeLzkK6Jwg"
+        />
         <PersonalInfo>
           <PersonalUserName name="Алексей" surname="Лукоянов" />
           <SocialList>
