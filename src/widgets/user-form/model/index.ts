@@ -1,5 +1,5 @@
-import { PayloadAction, createSlice } from "@reduxjs/toolkit";
-import { SexType, UserFormType } from "shared/api/cloud-api";
+import { PayloadAction, createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import { SexType, UserFormType, sendUserFormData } from "shared/api/cloud-api";
 
 export type UserFormDataOneType = Pick<
   UserFormType,
@@ -16,6 +16,7 @@ interface UserFormState {
   formDataTwo: UserFormDataTwoType;
   formDataThree: UserFormDataThreeType;
   formStep: number;
+  status: "idle" | "pending" | "fulfilled" | "rejected";
 }
 
 const formDataOne = {
@@ -39,7 +40,8 @@ const initialState: UserFormState = {
   formDataOne: formDataOne,
   formDataTwo: formDataTwo,
   formDataThree: formDataThree,
-  formStep: 3,
+  formStep: 1,
+  status: "idle",
 };
 
 const UserFormSlice = createSlice({
@@ -61,20 +63,32 @@ const UserFormSlice = createSlice({
     setFormStep(state, action: PayloadAction<number>) {
       state.formStep = action.payload;
     },
-    setAddAdvantage: (state) => {
-      state.formDataTwo.advantages.push("");
+    setResetFormData(state) {
+      state.formDataOne = formDataOne;
+      state.formDataTwo = formDataTwo;
+      state.formDataThree = formDataThree;
+      state.formStep = 1;
     },
-    setDeleteAdvantage: (state, action: PayloadAction<number>) => {
-      state.formDataTwo.advantages.splice(action.payload, 1);
-    },
-    setChangeAdvantage: (
-      state,
-      action: PayloadAction<{ index: number; value: string }>
-    ) => {
-      state.formDataTwo.advantages[action.payload.index] = action.payload.value;
-    },
+  },
+  extraReducers: (builder) => {
+    builder.addCase(postUserForm.pending, (state) => {
+      state.status = "pending";
+    });
+    builder.addCase(postUserForm.fulfilled, (state) => {
+      state.status = "fulfilled";
+    });
+    builder.addCase(postUserForm.rejected, (state) => {
+      state.status = "rejected";
+    });
   },
 });
 
 export const { reducer: UserFormReducer, actions: UserFormActions } =
   UserFormSlice;
+
+export const postUserForm = createAsyncThunk(
+  "userForm/postUserForm",
+  async (data: UserFormType) => {
+    await sendUserFormData(data);
+  }
+);

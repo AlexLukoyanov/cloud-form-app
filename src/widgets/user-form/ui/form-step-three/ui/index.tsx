@@ -1,7 +1,11 @@
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useForm } from "react-hook-form";
 import { styled } from "styled-components";
-import { UserFormActions, UserFormDataThreeType } from "widgets/user-form/";
+import {
+  UserFormActions,
+  UserFormDataThreeType,
+  postUserForm,
+} from "widgets/user-form/";
 import { About } from "entities/about";
 import { useAppDispatch, useAppSelector } from "shared/lib/hooks";
 import { Button } from "shared/ui/button";
@@ -11,6 +15,7 @@ export const FormStepThree = () => {
   const dataFormOne = useAppSelector((state) => state.userForm.formDataOne);
   const dataFormTwo = useAppSelector((state) => state.userForm.formDataTwo);
   const { about } = useAppSelector((state) => state.userForm.formDataThree);
+  const { status } = useAppSelector((state) => state.userForm);
   const dispatch = useAppDispatch();
 
   const {
@@ -32,13 +37,17 @@ export const FormStepThree = () => {
     dispatch(UserFormActions.setFormStep(2));
   };
 
-  const onSubmit = (data: UserFormDataThreeType) => {
+  const onSubmit = async (data: UserFormDataThreeType) => {
     const validData = {
       ...dataFormOne,
       ...dataFormTwo,
 
       ...data,
     };
+    if (isValid) {
+      await dispatch(postUserForm(validData));
+      dispatch(UserFormActions.setResetFormData());
+    }
   };
   return (
     <Form onSubmit={handleSubmit(onSubmit)}>
