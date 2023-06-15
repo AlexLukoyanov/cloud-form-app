@@ -15,59 +15,53 @@ type RadioButtonProps = InputHTMLAttributes<HTMLInputElement> &
 export const RadioButton = forwardRef(
   ({ label, id, ...props }: RadioButtonProps, ref: Ref<HTMLInputElement>) => {
     return (
-      <Container>
-        <input type="radio" id={id} ref={ref} {...props} />
-        <label htmlFor={id}>{label}</label>
-      </Container>
+      <Label htmlFor={id}>
+        <InputField type="radio" id={id} ref={ref} {...props} />
+        <Span />
+        {label}
+      </Label>
     );
   }
 );
 
-const Container = styled.div`
-  label {
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    position: relative;
+const Label = styled.label`
+  display: flex;
+  align-items: center;
+`;
+
+const InputField = styled.input`
+  position: absolute;
+  z-index: -3;
+  opacity: 0;
+
+  &:checked + span {
+    background-color: ${(p) => p.theme.colors.purple};
+    box-shadow: 0 0 0 1.5px ${(p) => p.theme.colors.purple};
   }
 
-  input {
-    position: absolute;
-    opacity: 0;
-    z-index: -1;
+  &:focus + span {
+    box-shadow: 0 0 0 1.5px ${(p) => p.theme.colors.purple},
+      0 0 8px ${(p) => p.theme.colors.purple};
   }
 
-  label::before {
+  &:checked + span::after {
     content: "";
-    width: 16px;
-    height: 16px;
+    display: block;
+    width: 10px;
+    height: 10px;
+    background-color: ${(p) => p.theme.colors.white};
     border-radius: 50%;
-    border: 1.5px solid ${(p) => p.theme.colors.alpha[24]};
-    margin-right: 5px;
   }
+`;
 
-  input:checked {
-    & + label::before {
-      background-color: ${(p) => p.theme.colors.purple};
-      border: 1.5px solid ${(p) => p.theme.colors.purple};
-    }
-  }
-
-  input:checked {
-    & + label::after {
-      position: absolute;
-      content: "";
-      width: 8px;
-      height: 8px;
-      border-radius: 50%;
-      left: 5px;
-      background-color: ${(p) => p.theme.colors.white};
-    }
-
-    input:focus {
-      & + label::before {
-        box-shadow: 0 0 3px ${(p) => p.theme.colors.purple};
-      }
-    }
-  }
+const Span = styled.span`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 18px;
+  height: 18px;
+  margin-right: 8px;
+  box-shadow: 0 0 0 1.5px ${(p) => p.theme.colors.alpha[24]};
+  border-radius: 50%;
+  cursor: pointer;
 `;

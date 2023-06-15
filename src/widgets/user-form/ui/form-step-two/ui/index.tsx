@@ -80,11 +80,17 @@ export const FormStepTwo = () => {
           <RadioGroup register={register} errors={errors.radio?.message} />
         </InputWrapper>
         <ButtonContainer>
-          <Button type="button" variant="secondary" onClick={onClickBack}>
+          <Button
+            id="button-back"
+            type="button"
+            variant="secondary"
+            onClick={onClickBack}
+          >
             {" "}
             Назад
           </Button>
           <Button
+            id="button-next"
             type="submit"
             variant="primary"
             onClick={handleSubmit(onSubmit)}

@@ -11,7 +11,12 @@ export const DeleteAdvantage = ({ index, remove }: DeleteAdvantageProps) => {
     remove(index);
   };
   return (
-    <Button type="button" variant="icon-only" onClick={onDeleteAdvantage}>
+    <Button
+      id={`button-remove-${index}`}
+      type="button"
+      variant="icon-only"
+      onClick={onDeleteAdvantage}
+    >
       <TrashIcon />
     </Button>
   );

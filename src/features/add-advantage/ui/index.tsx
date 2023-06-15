@@ -12,7 +12,12 @@ export const AddAdvantage = ({ append, trigger }: AddAdvantageProps) => {
     append("");
   };
   return (
-    <Button type="button" variant="square-icon" onClick={onAddAdvantage}>
+    <Button
+      id="button add"
+      type="button"
+      variant="square-icon"
+      onClick={onAddAdvantage}
+    >
       <PlusIcon />
     </Button>
   );

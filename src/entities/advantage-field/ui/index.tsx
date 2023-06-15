@@ -17,7 +17,11 @@ export const AdvantageField = ({
     <Container>
       <Controller
         render={({ field }) => (
-          <Input {...field} placeholder="Write advantage" />
+          <Input
+            id={`field-advatages-${index}`}
+            {...field}
+            placeholder="Write advantage"
+          />
         )}
         name={`advantages.${index}`}
         control={control}

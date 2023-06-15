@@ -73,11 +73,17 @@ export const FormStepThree = () => {
           value={fieldValue}
         />
         <ButtonContainer>
-          <Button type="button" variant="secondary" onClick={onClickBack}>
+          <Button
+            id="button-back"
+            type="button"
+            variant="secondary"
+            onClick={onClickBack}
+          >
             {" "}
             Назад
           </Button>
           <Button
+            id="button-next"
             type="submit"
             variant="primary"
             onClick={handleSubmit(onSubmit)}

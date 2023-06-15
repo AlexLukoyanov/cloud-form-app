@@ -7,17 +7,32 @@ type TextAreaProps = HTMLAttributes<HTMLTextAreaElement> & {
   counter?: boolean;
   value?: string;
   errors?: string;
+  id?: string;
 };
 
 export const Textarea = forwardRef(
   (
-    { maxLength = 200, label, value, counter, errors, ...props }: TextAreaProps,
+    {
+      maxLength = 200,
+      id,
+      label,
+      value,
+      counter,
+      errors,
+      ...props
+    }: TextAreaProps,
     ref: Ref<HTMLTextAreaElement>
   ) => {
     return (
       <Container>
         <Label>{label}</Label>
-        <StyledTextArea rows={4} maxLength={maxLength} ref={ref} {...props} />
+        <StyledTextArea
+          id={id}
+          rows={4}
+          maxLength={maxLength}
+          ref={ref}
+          {...props}
+        />
         <Wrapper>
           <Error>{errors}</Error>
           {maxLength && counter && (

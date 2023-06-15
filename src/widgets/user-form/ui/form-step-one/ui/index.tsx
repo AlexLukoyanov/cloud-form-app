@@ -45,6 +45,7 @@ export const FormStepOne = () => {
       <Form>
         <InputWrapper>
           <NameField
+            id="field-nickname"
             name="nickname"
             label="Nickname"
             register={register}
@@ -53,6 +54,7 @@ export const FormStepOne = () => {
         </InputWrapper>
         <InputWrapper>
           <NameField
+            id="field-name"
             name="name"
             label="Name"
             register={register}
@@ -61,6 +63,7 @@ export const FormStepOne = () => {
         </InputWrapper>
         <InputWrapper>
           <NameField
+            id="field-surname"
             name="surname"
             label="Surname"
             register={register}
@@ -71,11 +74,17 @@ export const FormStepOne = () => {
           <SexSelect control={control} errors={errors.sex?.message} />
         </InputWrapper>
         <ButtonContainer>
-          <Button type="button" variant="secondary" onClick={onClickBack}>
+          <Button
+            id="button-back"
+            type="button"
+            variant="secondary"
+            onClick={onClickBack}
+          >
             {" "}
             Назад
           </Button>
           <Button
+            id="button-next"
             type="submit"
             variant="primary"
             onClick={handleSubmit(onSubmit)}

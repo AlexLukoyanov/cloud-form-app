@@ -6,6 +6,7 @@ type NameFieldProps = {
   errors?: string;
   label?: string;
   name: string;
+  id?: string;
 };
 
 export const NameField = ({
@@ -13,10 +14,11 @@ export const NameField = ({
   errors,
   name,
   label,
+  id,
 }: NameFieldProps) => {
   return (
     <Input
-      id={name}
+      id={id}
       type="text"
       label={label}
       {...register(name)}

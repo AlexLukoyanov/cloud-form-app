@@ -1,4 +1,4 @@
-import { HTMLAttributes } from "react";
+import { HTMLAttributes, PropsWithChildren, forwardRef } from "react";
 import styled, { css } from "styled-components";
 
 type ButtonProps = HTMLAttributes<HTMLButtonElement> & {
@@ -11,34 +11,46 @@ type ButtonProps = HTMLAttributes<HTMLButtonElement> & {
   disabled?: boolean;
   onClick?: () => void;
   href?: string;
-  type?: "button" | "submit";
+  id?: string;
+  type?: "button" | "submit" | "reset";
 };
 
-export const Button = ({
-  variant = "primary",
-  disabled,
-  onClick,
-  href,
-  children,
-  type,
-}: React.PropsWithChildren<ButtonProps>) => {
-  return (
-    <>
-      {variant === "link-with-icon" ? (
-        <StyledLink href={href}>{children}</StyledLink>
-      ) : (
-        <StyledButton
-          type={type}
-          variant={variant}
-          disabled={disabled}
-          onClick={onClick}
-        >
-          {children}
-        </StyledButton>
-      )}
-    </>
-  );
-};
+export const Button = forwardRef<
+  HTMLButtonElement,
+  PropsWithChildren<ButtonProps>
+>(
+  (
+    {
+      variant = "primary",
+      disabled,
+      onClick,
+      href,
+      children,
+      type = "button",
+      id,
+    },
+    ref
+  ) => {
+    return (
+      <>
+        {variant === "link-with-icon" ? (
+          <StyledLink href={href}>{children}</StyledLink>
+        ) : (
+          <StyledButton
+            type={type}
+            variant={variant}
+            disabled={disabled}
+            onClick={onClick}
+            id={id}
+            ref={ref}
+          >
+            {children}
+          </StyledButton>
+        )}
+      </>
+    );
+  }
+);
 
 const StyledButton = styled.button<ButtonProps>`
   display: flex;

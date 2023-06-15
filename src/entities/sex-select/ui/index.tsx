@@ -11,8 +11,8 @@ type SexSelectProps = {
 };
 
 const options = [
-  { value: SexType.man, label: SexType.man },
-  { value: SexType.woman, label: SexType.woman },
+  { value: SexType.man, label: SexType.man, id: "field-sex-option-man" },
+  { value: SexType.woman, label: SexType.woman, id: "field-sex-option-woman" },
 ];
 
 export const SexSelect = ({ control, errors }: SexSelectProps) => {
@@ -27,9 +27,9 @@ export const SexSelect = ({ control, errors }: SexSelectProps) => {
             <label>Sex</label>
             <StyledSelect
               ref={ref}
+              id="field-sex"
               classNamePrefix="Select"
               isSearchable={false}
-              placeholder="Не выбрано"
               options={options}
               value={options.find((c) => c.value === value)}
               onChange={(val: any) => onChange(val?.value)}

@@ -12,6 +12,7 @@ export const About = ({ register, errors, value }: AboutProps) => {
     <>
       <Textarea
         label={"About"}
+        id="field-about"
         placeholder={"Write about yourself... "}
         counter
         value={value}

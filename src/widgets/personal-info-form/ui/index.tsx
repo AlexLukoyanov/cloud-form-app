@@ -70,7 +70,9 @@ export const PersonalInfoForm = () => {
           <EmailField register={register} errors={errors.email?.message} />
         </InputWrapper>
       </InputContainer>
-      <Button type="submit">Начать</Button>
+      <Button id="button-start" type="submit">
+        Начать
+      </Button>
     </PageContainer>
   );
 };
