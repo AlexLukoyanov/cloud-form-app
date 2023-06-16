@@ -45,7 +45,7 @@ export const PersonalInfoForm = () => {
         <Avatar
           name="Алекей"
           surname="Лукоянов"
-          src="https://img.hhcdn.ru/photo/697990744.jpeg?t=1686837690&h=j0g5c-z5IucTZeLzkK6Jwg"
+          src="https://sun1-89.userapi.com/impg/Cu1AaYXG8e_UmUstc46jhD5ahx9vB9tV7DXDqg/haSwGLMel0c.jpg?size=940x985&quality=96&sign=f0451a3631995ca9ae8689aff53c363f&type=album"
         />
         <PersonalInfo>
           <PersonalUserName name="Алексей" surname="Лукоянов" />
