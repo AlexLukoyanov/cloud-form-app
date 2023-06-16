@@ -5,6 +5,7 @@ import { CheckBox } from "shared/ui/checkbox";
 type CheckGroupProps = {
   register: UseFormRegister<any>;
   errors?: string;
+  defaultValues?: number[];
 };
 
 const checkGroupData = [
@@ -13,7 +14,11 @@ const checkGroupData = [
   { id: "field-checkbox-group-option-3", label: "3", value: 3 },
 ];
 
-export const CheckGroup = ({ register, errors }: CheckGroupProps) => {
+export const CheckGroup = ({
+  register,
+  defaultValues,
+  errors,
+}: CheckGroupProps) => {
   return (
     <Container>
       <Text>Checkbox group</Text>
@@ -24,6 +29,7 @@ export const CheckGroup = ({ register, errors }: CheckGroupProps) => {
               id={el.id}
               label={el.label}
               value={el.value}
+              defaultChecked={defaultValues?.includes(el.value)}
               {...register("checkbox")}
             />
           </Item>

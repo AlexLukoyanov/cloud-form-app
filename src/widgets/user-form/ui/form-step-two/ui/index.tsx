@@ -18,6 +18,12 @@ export const FormStepTwo = () => {
   );
   const dispatch = useAppDispatch();
 
+  const defaultValues = {
+    advantages,
+    checkbox,
+    radio,
+  };
+
   const {
     register,
     handleSubmit,
@@ -25,8 +31,8 @@ export const FormStepTwo = () => {
     getValues,
     trigger,
     formState: { errors, isValid },
-  } = useForm<UserFormDataTwoType>({
-    defaultValues: { advantages, checkbox, radio },
+  } = useForm({
+    defaultValues: defaultValues,
     resolver: yupResolver(formStepTwoSchema),
   });
   const { fields, remove, append } = useFieldArray<any>({
@@ -83,8 +89,16 @@ export const FormStepTwo = () => {
             })}
           </AdvantagesList>
           <AddAdvantage trigger={trigger} append={append} />
-          <CheckGroup register={register} errors={errors.checkbox?.message} />
-          <RadioGroup register={register} errors={errors.radio?.message} />
+          <CheckGroup
+            register={register}
+            errors={errors.checkbox?.message}
+            defaultValues={defaultValues.checkbox}
+          />
+          <RadioGroup
+            register={register}
+            errors={errors.radio?.message}
+            defaultValues={defaultValues.radio}
+          />
         </InputWrapper>
         <ButtonContainer>
           <Button

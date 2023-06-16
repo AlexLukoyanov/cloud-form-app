@@ -5,6 +5,7 @@ import { RadioButton } from "shared/ui/radio";
 type RadioGroupProps = {
   register: UseFormRegister<any>;
   errors?: string;
+  defaultValues?: number;
 };
 
 const radioGroupData = [
@@ -14,11 +15,25 @@ const radioGroupData = [
     value: 1,
     defaultChecked: true,
   },
-  { id: "field-radio-group-option-2", label: "2", value: 2 },
-  { id: "field-radio-group-option-3", label: "3", value: 3 },
+  {
+    id: "field-radio-group-option-2",
+    label: "2",
+    value: 2,
+    defaultChecked: false,
+  },
+  {
+    id: "field-radio-group-option-3",
+    label: "3",
+    value: 3,
+    defaultChecked: false,
+  },
 ];
 
-export const RadioGroup = ({ register, errors }: RadioGroupProps) => {
+export const RadioGroup = ({
+  register,
+  errors,
+  defaultValues,
+}: RadioGroupProps) => {
   return (
     <Container>
       <Text>Radio group</Text>
@@ -29,7 +44,9 @@ export const RadioGroup = ({ register, errors }: RadioGroupProps) => {
               id={el.id}
               label={el.label}
               value={el.value}
-              defaultChecked={el.defaultChecked}
+              defaultChecked={
+                el.value === defaultValues ? true : el.defaultChecked
+              }
               {...register("radio")}
             />
           </Item>
