@@ -1,4 +1,5 @@
 import { yupResolver } from "@hookform/resolvers/yup";
+import { useEffect } from "react";
 import { useFieldArray, useForm } from "react-hook-form";
 import { styled } from "styled-components";
 import { UserFormActions, UserFormDataTwoType } from "widgets/user-form/";
@@ -32,6 +33,12 @@ export const FormStepTwo = () => {
     control,
     name: "advantages",
   });
+
+  useEffect(() => {
+    if (fields.length === 0) {
+      append("");
+    }
+  }, []);
 
   const onClickBack = () => {
     const currentData = getValues();
