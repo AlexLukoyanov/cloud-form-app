@@ -22,6 +22,7 @@ export const EmailField = ({
       {...register(name)}
       placeholder="Введите email"
       error={errors}
+      requiredTag
     />
   );
 };

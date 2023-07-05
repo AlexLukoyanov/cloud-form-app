@@ -73,7 +73,9 @@ export const FormStepTwo = () => {
     <>
       <Form>
         <InputWrapper>
-          <Text>Advantages</Text>
+          <Text>
+            Advantages <Star>*</Star>
+          </Text>
           <AdvantagesList>
             {fields.map((item, index) => {
               return (
@@ -142,6 +144,11 @@ const InputWrapper = styled.div`
 
 const Text = styled.p`
   margin-bottom: 8px;
+  display: flex;
+`;
+const Star = styled.span`
+  color: ${(p) => p.theme.colors.red};
+  margin-left: 3px;
 `;
 const AdvantagesList = styled.ul`
   display: flex;

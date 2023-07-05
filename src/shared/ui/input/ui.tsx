@@ -13,11 +13,12 @@ type InputProps = InputHTMLAttributes<HTMLInputElement> &
     label?: string;
     error?: string;
     mask?: boolean;
+    requiredTag?: boolean;
   };
 
 export const Input = forwardRef(
   (
-    { label, error, mask, ...props }: InputProps,
+    { label, error, mask, requiredTag, ...props }: InputProps,
     ref: Ref<HTMLInputElement>
   ) => {
     return (
@@ -25,7 +26,9 @@ export const Input = forwardRef(
         {mask ? (
           <Container>
             <Label>
-              {label}
+              <Wrapper>
+                {label} {requiredTag && <Star>*</Star>}
+              </Wrapper>
               <StyledInputMask
                 mask="+7 (999) 999 99-99"
                 error={error}
@@ -38,7 +41,12 @@ export const Input = forwardRef(
         ) : (
           <Container>
             <Label>
-              {label}
+              {label && (
+                <Wrapper>
+                  {label} {requiredTag && <Star>*</Star>}
+                </Wrapper>
+              )}
+
               <InputField {...props} ref={ref} error={error} />
             </Label>
             {error ? <Error>{error}</Error> : null}
@@ -107,4 +115,13 @@ const StyledInputMask = styled(InputMask)<Pick<InputProps, "error">>`
   &:disabled {
     opacity: 0.3;
   }
+`;
+
+const Star = styled.span`
+  color: ${(p) => p.theme.colors.red};
+  margin-left: 3px;
+`;
+
+const Wrapper = styled.p`
+  display: flex;
 `;

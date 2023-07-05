@@ -17,6 +17,7 @@ export const About = ({ register, errors, value }: AboutProps) => {
         counter
         value={value}
         errors={errors}
+        requiredTag
         {...register("about")}
       />
     </>

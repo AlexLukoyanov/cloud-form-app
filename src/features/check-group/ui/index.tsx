@@ -21,7 +21,9 @@ export const CheckGroup = ({
 }: CheckGroupProps) => {
   return (
     <Container>
-      <Text>Checkbox group</Text>
+      <Text>
+        Checkbox group <Star>*</Star>
+      </Text>
       <List>
         {checkGroupData.map((el) => (
           <Item key={el.id}>
@@ -52,6 +54,7 @@ const List = styled.ul`
 const Text = styled.p`
   margin-top: 24px;
   margin-bottom: 8px;
+  display: flex;
 `;
 
 const Item = styled.li`
@@ -64,4 +67,9 @@ const Item = styled.li`
 const Error = styled.p`
   color: ${(p) => p.theme.colors.red};
   margin-top: 8px;
+`;
+
+const Star = styled.span`
+  color: ${(p) => p.theme.colors.red};
+  margin-left: 3px;
 `;

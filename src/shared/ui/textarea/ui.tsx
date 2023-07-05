@@ -8,6 +8,7 @@ type TextAreaProps = HTMLAttributes<HTMLTextAreaElement> & {
   value?: string;
   errors?: string;
   id?: string;
+  requiredTag?: boolean;
 };
 
 export const Textarea = forwardRef(
@@ -19,13 +20,20 @@ export const Textarea = forwardRef(
       value,
       counter,
       errors,
+      requiredTag,
       ...props
     }: TextAreaProps,
     ref: Ref<HTMLTextAreaElement>
   ) => {
     return (
       <Container>
-        <Label>{label}</Label>
+        <Label>
+          {label && (
+            <LabelWrapper>
+              {label} {requiredTag && <Star>*</Star>}
+            </LabelWrapper>
+          )}
+        </Label>
         <StyledTextArea
           id={id}
           rows={4}
@@ -53,6 +61,15 @@ const Container = styled.div`
 
 const Label = styled.label`
   margin-bottom: 8px;
+`;
+
+const Star = styled.span`
+  color: ${(p) => p.theme.colors.red};
+  margin-left: 3px;
+`;
+
+const LabelWrapper = styled.p`
+  display: flex;
 `;
 
 const StyledTextArea = styled.textarea`

@@ -24,6 +24,7 @@ export const NameField = ({
       {...register(name)}
       placeholder={`Введите ${label}`}
       error={errors}
+      requiredTag
     />
   );
 };

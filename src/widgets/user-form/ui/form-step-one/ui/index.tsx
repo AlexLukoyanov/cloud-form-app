@@ -71,7 +71,11 @@ export const FormStepOne = () => {
           />
         </InputWrapper>
         <InputWrapper>
-          <SexSelect control={control} errors={errors.sex?.message} />
+          <SexSelect
+            control={control}
+            errors={errors.sex?.message}
+            requiredTag
+          />
         </InputWrapper>
         <ButtonContainer>
           <Button

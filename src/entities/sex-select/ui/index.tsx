@@ -8,6 +8,7 @@ type controlType = Pick<UserFormType, "nickname" | "name" | "surname" | "sex">;
 type SexSelectProps = {
   control: Control<controlType>;
   errors?: string;
+  requiredTag?: boolean;
 };
 
 const options = [
@@ -15,7 +16,7 @@ const options = [
   { value: SexType.woman, label: SexType.woman, id: "field-sex-option-woman" },
 ];
 
-export const SexSelect = ({ control, errors }: SexSelectProps) => {
+export const SexSelect = ({ control, errors, requiredTag }: SexSelectProps) => {
   return (
     <>
       <Controller
@@ -24,7 +25,8 @@ export const SexSelect = ({ control, errors }: SexSelectProps) => {
         rules={{ required: true }}
         render={({ field: { onChange, value, ref } }) => (
           <>
-            <label>Sex</label>
+            <Wrapper>Sex {requiredTag && <Star>*</Star>}</Wrapper>
+
             <StyledSelect
               ref={ref}
               id="field-sex"
@@ -86,4 +88,13 @@ const StyledSelect = styled(Select)`
 const Error = styled.p`
   color: ${(p) => p.theme.colors.red};
   margin-top: 8px;
+`;
+
+const Star = styled.span`
+  color: ${(p) => p.theme.colors.red};
+  margin-left: 3px;
+`;
+
+const Wrapper = styled.p`
+  display: flex;
 `;

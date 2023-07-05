@@ -23,6 +23,7 @@ export const PhoneField = ({
       {...register(name)}
       placeholder="Введите номер телефона"
       error={errors}
+      requiredTag
     />
   );
 };
