@@ -3,7 +3,8 @@ import * as yup from "yup";
 export const formStepTwoSchema = yup.object().shape({
   advantages: yup
     .array()
-    .of(yup.string().required("Поле Advantage не должно быть пустым")),
+    .of(yup.string().required("Поле Advantage не должно быть пустым"))
+    .min(1, "Advantages обязательно для заполнения"),
 
   checkbox: yup
     .array()

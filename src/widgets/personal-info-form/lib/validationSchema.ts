@@ -1,12 +1,14 @@
 import * as yup from "yup";
 
+const emailRegExp = /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/;
+
 const phoneRegExp =
   /^(\+7|8)\s?\(?\d{3}\)?[\s.-]?\d{3}[\s.-]?\d{2}[\s.-]?\d{2}$/;
 
 export const validationSchema = yup.object().shape({
   email: yup
     .string()
-    .email("Неверный формат email-адреса")
+    .matches(emailRegExp, "Неверный формат email-адреса")
     .required("Поле Email обязательно для заполнения"),
   phone: yup
     .string()

@@ -88,6 +88,7 @@ export const FormStepTwo = () => {
               );
             })}
           </AdvantagesList>
+          {errors.advantages && <Error>{errors.advantages?.message}</Error>}
           <AddAdvantage trigger={trigger} append={append} />
           <CheckGroup
             register={register}
@@ -172,4 +173,9 @@ const ButtonContainer = styled.div`
       margin-right: 0px;
     }
   }
+`;
+
+const Error = styled.p`
+  color: ${(p) => p.theme.colors.red};
+  margin-bottom: 8px;
 `;
