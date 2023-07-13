@@ -22,7 +22,7 @@ export const router = createBrowserRouter([
     errorElement: <ErrorPage />,
   },
   {
-    path: "/user-form",
+    path: "/create",
     element: <UserFormPage />,
   },
 ]);

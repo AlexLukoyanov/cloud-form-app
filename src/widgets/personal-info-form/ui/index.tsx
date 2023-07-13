@@ -35,7 +35,7 @@ export const PersonalInfoForm = () => {
   const onSubmit = (data: PersonalInfoType) => {
     if (isValid) {
       dispatch(PersonalInfoFormActions.setUpdateFormData(data));
-      navigate("/user-form");
+      navigate("/create");
     }
   };
 
