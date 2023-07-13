@@ -3,28 +3,34 @@ import { CheckIcon } from "../icons";
 
 type ProgressBar = {
   progress?: number;
+  stepCount?: number;
 };
 
-export const ProgressBar = ({ progress = 1 }: ProgressBar) => {
+export const ProgressBar = ({ progress = 1, stepCount = 3 }: ProgressBar) => {
+  const stepArray = Array(stepCount).fill(stepCount);
+
   return (
     <Container>
       <ProgressBarContainer>
-        <Circle active={progress >= 1 ? "true" : "false"}>
-          {progress >= 2 ? <CheckIcon /> : <Dote />}
+        {stepArray.map((_, index) => (
+          <>
+            <Circle
+              key={index}
+              active={progress >= index + 1 ? "true" : "false"}
+            >
+              {progress >= index + 2 ? <CheckIcon /> : <Dote />}
 
-          <Step active={progress >= 1 ? "true" : "false"}>1</Step>
-        </Circle>
+              <Step active={progress >= index + 1 ? "true" : "false"}>
+                {index + 1}
+              </Step>
+            </Circle>
 
-        <Line active={progress >= 2 ? "true" : "false"} />
-        <Circle active={progress >= 2 ? "true" : "false"}>
-          {progress >= 3 ? <CheckIcon /> : <Dote />}{" "}
-          <Step active={progress >= 2 ? "true" : "false"}>2</Step>
-        </Circle>
-        <Line active={progress >= 3 ? "true" : "false"} />
-        <Circle active={progress >= 3 ? "true" : "false"}>
-          {progress >= 3 && <Dote />}{" "}
-          <Step active={progress >= 3 ? "true" : "false"}>3</Step>
-        </Circle>
+            <Line
+              active={progress >= index + 2 ? "true" : "false"}
+              isLastStep={stepArray.length === index + 1}
+            />
+          </>
+        ))}
       </ProgressBarContainer>
     </Container>
   );
@@ -58,7 +64,8 @@ const Circle = styled.div<{ active: string }>`
       : p.theme.colors.text.tertiaryG350};
 `;
 
-const Line = styled.div<{ active: string }>`
+const Line = styled.div<{ active: string; isLastStep?: boolean }>`
+  display: ${(p) => (p.isLastStep ? "none" : "block")};
   flex: 1;
   height: 8px;
   transform: scale(1.01);
